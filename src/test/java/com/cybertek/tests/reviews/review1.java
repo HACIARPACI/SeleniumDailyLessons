@@ -6,6 +6,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import javax.xml.xpath.XPath;
+
 public class review1 {
     public static void main(String[] args) throws InterruptedException {
       WebDriverManager.chromedriver().setup();
@@ -32,6 +34,9 @@ public class review1 {
         WebDriverManager.edgedriver().setup();
         WebDriver driver2= new EdgeDriver();
         driver2.get("https://www.facebook.com");
+
+
+
 
 
     }
