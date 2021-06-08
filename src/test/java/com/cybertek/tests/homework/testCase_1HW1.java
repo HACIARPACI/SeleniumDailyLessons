@@ -15,15 +15,16 @@ print number of results*/
         WebDriver driver= WebDriverFactory.getDriver("chrome");
         driver.get("https://www.ebay.com/");
 
-        WebElement searchBox= driver.findElement(By.xpath("//input[@id='gh-ac']"));
+       WebElement searchBox= driver.findElement(By.xpath("//input[@id='gh-ac']"));
+
         searchBox.click();
         searchBox.sendKeys("search");
 
         driver.findElement(By.xpath("//input[@id='gh-btn']")).click();
 
-       String result= driver.findElement(By.xpath("//h1/span[1]")).getText();
+       String result = driver.findElement(By.xpath("//h1/span[1]")).getText();
         System.out.println(result);
-
+        driver.quit();
 
     }
 

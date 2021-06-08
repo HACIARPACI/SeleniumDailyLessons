@@ -18,17 +18,19 @@ public class testCase_3HW1 {
 
         WebElement searchBox= driver.findElement(By.xpath("//input[@id='searchInput']"));
         searchBox.click();
-        searchBox.sendKeys("Selenium (software)");
+        searchBox.sendKeys("Selenium webdriver");
 
-        driver.findElement(By.xpath("//i[@data-jsl10n='search-input-button']")).click();
-        String currentUrl= driver.getCurrentUrl();
+       driver.findElement(By.xpath("//i[@data-jsl10n='search-input-button']")).click();
+       driver.findElement(By.xpath("//li[@class='mw-search-result'][1]/div/a")).click();
+       String url= driver.getCurrentUrl();
+       /// String currentUrl= driver.getCurrentUrl();
         String expected="Selenium_(software)";
-        if(currentUrl.endsWith(expected)){
+        if(url.endsWith(expected)){
             System.out.println("PASS");
         }else{
             System.out.println("FAIL");
         }
-
+        driver.quit();
 
 
 

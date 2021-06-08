@@ -39,6 +39,7 @@ public class AmazonTest {
             System.out.println("actual"+actualResult);
 
         }
+    driver.quit();
 
     }
 

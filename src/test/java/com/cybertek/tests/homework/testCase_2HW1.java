@@ -21,15 +21,14 @@ public class testCase_2HW1 {
 
         driver.findElement(By.xpath("//input[@id='gh-btn']")).click();
         String title= driver.getTitle();
-        String expected="Selenium";
+      //  String expected="Selenium";
 
-        if(title.contains(expected)){
+        if(title.contains("Selenium")){
             System.out.println("PASS");
         }else{
             System.out.println("FAIL");
         }
-
-
+        driver.quit();
     }
 
 
