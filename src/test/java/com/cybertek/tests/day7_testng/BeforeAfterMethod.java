@@ -12,6 +12,7 @@ public void setUpClass(){
  public void test1(){
      System.out.println("First Test Case");
  }
+
   @Ignore //test2 yi kosturmak istemez isek @Ignore yaparız
  @Test
  public void test2(){
