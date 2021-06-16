@@ -7,10 +7,14 @@ import org.openqa.selenium.WebDriver;
 public class xpath {
     public static void main(String[] args) throws InterruptedException {
         WebDriver driver = WebDriverFactory.getDriver("chrome");
-        driver.get("https://www.amazon.com.tr/");
+        driver.get("https://www.amazon.com/");
         driver.manage().window().maximize();
-        driver.findElement(By.xpath("//span[@class='nav-line-2']")).click();
-        Thread.sleep(5000);
-        driver.quit();
+    driver.findElement(By.cssSelector("img[alt ='Find your ideal TV")).click();
+
+
+
+
+
+
     }
 }
