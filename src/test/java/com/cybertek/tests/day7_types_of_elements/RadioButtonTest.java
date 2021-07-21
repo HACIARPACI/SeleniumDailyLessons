@@ -21,7 +21,7 @@ public class RadioButtonTest {
         System.out.println("blueRadioBtn.isSelected() = " + blueRadioBtn.isSelected());
         System.out.println("redRadioBtn.isSelected() = " + redRadioBtn.isSelected());
 
-        //verify blue is selected redis not selected
+        //verify blue is selected red is not selected
         //blue
         Assert.assertTrue(blueRadioBtn.isSelected(),"verify that blue is selected");
         //red

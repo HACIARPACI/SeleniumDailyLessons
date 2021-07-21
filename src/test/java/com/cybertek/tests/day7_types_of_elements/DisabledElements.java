@@ -16,7 +16,7 @@ public class DisabledElements {
 
         WebElement greenRadioBtn = driver.findElement(By.cssSelector("#green"));
 
-        //how to chech any webwlwmwnt enabled or not
+        //how to chech any webelementt enabled or not
         System.out.println("greenRadioBtn.isEnabled() = " + greenRadioBtn.isEnabled());
         //verify greenRadioBtn is not enable to click
         Assert.assertFalse(greenRadioBtn.isEnabled(),"verify green radio button is NOT enabled");

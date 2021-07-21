@@ -15,12 +15,11 @@ public class OpenBrowser {
     //.get(url) method use for naviation to page
         driver.get("https://cybertekschool.com");*/
 
-    WebDriverManager.firefoxdriver().setup();
+   WebDriverManager.firefoxdriver().setup();
 
     WebDriver driver= new FirefoxDriver();
 
     driver.get("https://www.facebook.com");
-
 
 
 
