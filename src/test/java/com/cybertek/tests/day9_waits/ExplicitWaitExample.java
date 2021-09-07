@@ -36,7 +36,7 @@ public class ExplicitWaitExample {
         //ama impilicit de html de web wlwmnt yok belirli bir saniye de geliyor
         //HOW TO WAIT EXPLICITLY ?
         //create Explicit wait object
-        WebDriverWait wait = new WebDriverWait(driver,20);
+        WebDriverWait wait = new WebDriverWait(driver,15);
 
         wait.until(ExpectedConditions.visibilityOf(usernameInput));
 

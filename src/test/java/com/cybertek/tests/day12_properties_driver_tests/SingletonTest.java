@@ -1,5 +1,6 @@
 package com.cybertek.tests.day12_properties_driver_tests;
 
+import com.cybertek.utilities.ConfigurationReader;
 import com.cybertek.utilities.Driver;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
@@ -7,7 +8,7 @@ import org.testng.annotations.Test;
 
 
 public class SingletonTest {
-    //@Test
+    @Test
     public void test1() {
         String s1 = Singleton.getInstance();
         String s2 = Singleton.getInstance();
@@ -19,11 +20,12 @@ public class SingletonTest {
 
     @Test
     public void test2() throws InterruptedException {
-        WebDriver driver = Driver.get();
+       WebDriver driver = Driver.get();
         Thread.sleep(2000);
         driver.get("https://www.google.com");
 
-      //  Driver.closeDriver();
+     //   Driver.get().get("https://www.google.com");
+       Driver.closeDriver();
 
     }
 
@@ -32,6 +34,8 @@ public class SingletonTest {
         WebDriver driver = Driver.get();
 
         driver.get("https://www.amazon.com");
+       // Driver.get().get(ConfigurationReader.get("url"));
+
     }
 
 

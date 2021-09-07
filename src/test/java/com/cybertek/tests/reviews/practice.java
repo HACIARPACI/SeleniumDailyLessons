@@ -1,5 +1,11 @@
 package com.cybertek.tests.reviews;
 
+import com.cybertek.pages.CalendarEventsPage;
+import com.cybertek.pages.CreateCalendarEventsPage;
+import com.cybertek.pages.DashboardPage;
+import com.cybertek.pages.LoginPage;
+import com.cybertek.tests.TestBase;
+import com.cybertek.utilities.BrowserUtils;
 import com.cybertek.utilities.WebDriverFactory;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -11,54 +17,111 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-public class practice {
-    WebDriver driver;
+public class practice extends TestBase {
 
-    @BeforeMethod
-    public void Setup() {
-        driver = WebDriverFactory.getDriver("chrome");
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        driver.get("https://datatables.net/examples/data_sources/dom");
-    }
-
-    @Test
-    public void test1() throws InterruptedException {
-        int ages = driver.findElements(By.xpath("//table[@id='example']/tbody/tr")).size();
-        //table[@id='example']/tbody/tr[1]/td[4]
-        int[] list = new int[ages];
-     //   int i=0;
-        for (int i = 1; i <= ages; i++) {
-            WebElement age = driver.findElement(By.xpath("//table[@id='example']/tbody/tr[" + i + "]/td[4]"));
-            System.out.println(age.getText());
-
-            //    Integer.parseInt(age.getText());
-
-            list[i] = Integer.parseInt(age.getText());
-            //Integer.parseInt(age.getText());
-            System.out.println(list[i]);
-
-            }
-        for (int i = 1; i <=ages ; i++) {
-            if (list[i] > 60) {
-                System.out.println(driver.findElement(By.xpath("//table[@id='example']/tbody/tr[" + i + "]/td[1]")).getText());
-
-            }
-        }
+  @Test
+  public void test1() {
 
 
-        }
-    }
-/* /*tep 1. Go to “https://datatables.net/examples/data_sources/dom"
-        Step 2.  Get name and age of personnel over 60 years old  and print to console
-        Step 3. Verify that personnel over 60 years old less than 3
+      LoginPage log = new LoginPage();
+      log.loginAsDriver();
 
-        (hint: use Map Interface)
+      DashboardPage dash= new DashboardPage();
+      String expected="Quick Launchpad";
+      String actual = dash.getPageSubTitle();
+      Assert.assertEquals(actual,expected);
+
+      dash.navigateToModule("Activities","Calendar Events");
+      CalendarEventsPage cal= new CalendarEventsPage();
+      String expectedAC="Calendar Events";
+      String actualAC= cal.getPageSubTitle();
+      Assert.assertEquals(actualAC,expectedAC);
 
 
-        console:
-        Ashton Cox:66
-        Brielle Williamson:61 */
+
+  }
+    /*VERIFY RADIO BUTTONS
+        Open Chrome browser
+        Login as driver
+        Go to Activities->Calendar Events
+        Click on create calendar events
+        Click on repeat
+        Verify that repeat every days is checked
+        verify that repeat weekday is not checked
+
+
+      */
+@Test
+    public void test2(){
+
+    LoginPage log=new LoginPage();
+    log.loginAsDriver();
+    DashboardPage dash= new DashboardPage();
+    dash.navigateToModule("Activities","Calendar Events");
+
+    CalendarEventsPage cal= new CalendarEventsPage();
+    cal.waitUntilLoaderScreenDisappear();
+    BrowserUtils.waitForClickablility(cal.createCalendarEvent,10);
+    cal.createCalendarEvent.click();
+
+    CreateCalendarEventsPage create= new CreateCalendarEventsPage();
+    create.repeat.click();
+
+    Assert.assertTrue(create.days.isSelected());
+    Assert.assertFalse(create.weekday.isSelected());
+
+
+
+
+
+}
+    /*
+        VERIFY REPEAT OPTIONS
+           Open Chrome browser
+           Login as driver
+           Go to Activities->Calendar Events
+           Click on create calendar events button
+           Click on repeat checkbox
+           Verify that repeat options are Daily, Weekly, Monthly,Yearly(in this order)
+        */
+@Test
+    public void test3(){
+    LoginPage log=new LoginPage();
+    log.loginAsDriver();
+    DashboardPage dash= new DashboardPage();
+    dash.navigateToModule("Activities","Calendar Events");
+
+    CalendarEventsPage cal= new CalendarEventsPage();
+    cal.waitUntilLoaderScreenDisappear();
+    BrowserUtils.waitForClickablility(cal.createCalendarEvent,10);
+    cal.createCalendarEvent.click();
+
+    CreateCalendarEventsPage create= new CreateCalendarEventsPage();
+    create.repeat.click();
+
+    Select dropdown = create.repeatOptionsList();
+    List<String>actualOp= new ArrayList<>();
+
+
+    List<WebElement> options = dropdown.getOptions();
+ /*   for (WebElement option : options) {
+        actualOp.add(option.getText());
+
+    }*/
+
+    List<String> actual = BrowserUtils.getElementsText(options);
+    List<String>expected= Arrays.asList("Daily","Weekly","Monthly","Yearly");
+
+   Assert.assertEquals(actual,expected);
+
+
+
+}
+
+}

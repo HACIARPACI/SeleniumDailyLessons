@@ -31,6 +31,7 @@ public class ActionsTest {
         //how to create actions object --> passing driver as a constructor
 
         Actions action=new Actions(driver);
+
         //perform() --> perform the action, complete the action
         //moveToElement --> move you mouse to webelement(hover over)
         Thread.sleep(2000);
