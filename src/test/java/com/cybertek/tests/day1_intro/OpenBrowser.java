@@ -12,7 +12,7 @@ public class OpenBrowser {
         WebDriverManager.chromedriver().setup();
     //we are creating driver for chrome browser
         WebDriver driver= new ChromeDriver();
-    //.get(url) method use for naviation to page
+    //.get(url) method use for naviation to pageq
         driver.get("https://cybertekschool.com");*/
 
    WebDriverManager.firefoxdriver().setup();
